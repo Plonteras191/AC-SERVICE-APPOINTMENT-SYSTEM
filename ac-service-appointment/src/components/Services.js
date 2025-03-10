@@ -15,7 +15,7 @@ const Services = () => {
       title: 'Installation',
       description: 'Professional installation services for new air conditioning units with expert advice and support.',
     },
-    // You can add more services here as needed.
+    
   ];
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaSnowflake } from 'react-icons/fa'; // Import the icon
+import { FaSnowflake } from 'react-icons/fa';
 import '../styles/Header.css';
 
 const Header = () => {
