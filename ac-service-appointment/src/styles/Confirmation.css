@@ -1,0 +1,47 @@
+/* Container for the confirmation page */
+.confirmation-container {
+    padding: 50px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .confirmation-container h2 {
+    color: #007BFF;
+    margin-bottom: 20px;
+  }
+  
+  .confirmation-container p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .confirmation-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  
+  .confirmation-container li {
+    margin-bottom: 5px;
+  }
+  
+  .confirmation-container button {
+    padding: 12px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .confirmation-container button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+  
