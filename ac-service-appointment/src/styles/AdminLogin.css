@@ -1,8 +1,8 @@
-/* src/styles/AdminLogin.css */
+
 .admin-login {
   padding: 50px;
   max-width: 400px;
-  margin: 70px auto 50px; /* Top margin to avoid header */
+  margin: 70px auto 50px; 
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);

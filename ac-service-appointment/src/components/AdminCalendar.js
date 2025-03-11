@@ -1,12 +1,11 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/AdminCalendar.css';
 
 const AdminCalendar = () => {
   const navigate = useNavigate();
-  
-  
+
+  // Sample available dates for demonstration
   const availableDates = [
     '2025-04-01',
     '2025-04-02',
@@ -18,6 +17,9 @@ const AdminCalendar = () => {
   return (
     <div className="admin-calendar-page">
       <h2>Admin Calendar</h2>
+      <button className="back-button" onClick={() => navigate('/admin/dashboard')}>
+        Back to Dashboard
+      </button>
       <div className="calendar-container">
         <div className="big-calendar">
           <h3>Big Calendar</h3>
@@ -36,7 +38,6 @@ const AdminCalendar = () => {
           </ul>
         </div>
       </div>
-      <button onClick={() => navigate(-1)}>Back to Dashboard</button>
     </div>
   );
 };

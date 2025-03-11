@@ -3,18 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/AdminAppointments.css';
 
 const AdminAppointments = () => {
-  
+  // Sample appointments data
   const initialAppointments = [
     { id: 1, customer: 'John Doe', service: 'Repair', date: '2025-04-01', time: '10:00 AM', status: 'Pending' },
     { id: 2, customer: 'Jane Smith', service: 'Installation', date: '2025-04-02', time: '02:00 PM', status: 'Pending' },
   ];
 
   const [appointments, setAppointments] = useState(initialAppointments);
-  const [rescheduleId, setRescheduleId] = useState(null);
-  const [newDate, setNewDate] = useState('');
   const navigate = useNavigate();
 
-  
+  // Update status to Declined
   const handleDecline = (id) => {
     setAppointments(
       appointments.map((appt) =>
@@ -23,35 +21,13 @@ const AdminAppointments = () => {
     );
   };
 
- 
+  // Update status to Confirmed
   const handleConfirm = (id) => {
     setAppointments(
       appointments.map((appt) =>
         appt.id === id ? { ...appt, status: 'Confirmed' } : appt
       )
     );
-  };
-
-  
-  const handleRescheduleClick = (id) => {
-    setRescheduleId(id);
-  };
-
-  
-  const handleRescheduleConfirm = (id) => {
-    setAppointments(
-      appointments.map((appt) =>
-        appt.id === id ? { ...appt, date: newDate, status: 'Rescheduled' } : appt
-      )
-    );
-    setRescheduleId(null);
-    setNewDate('');
-  };
-
-  
-  const handleRescheduleCancel = () => {
-    setRescheduleId(null);
-    setNewDate('');
   };
 
   return (
@@ -84,60 +60,22 @@ const AdminAppointments = () => {
                 <td>{appt.id}</td>
                 <td>{appt.customer}</td>
                 <td>{appt.service}</td>
-                <td>
-                  {appt.date}
-                  {rescheduleId === appt.id && (
-                    <div className="reschedule-input-container">
-                      <input
-                        type="date"
-                        value={newDate}
-                        onChange={(e) => setNewDate(e.target.value)}
-                        className="reschedule-date-input"
-                      />
-                    </div>
-                  )}
-                </td>
+                <td>{appt.date}</td>
                 <td>{appt.time}</td>
                 <td>{appt.status}</td>
                 <td>
-                  {rescheduleId === appt.id ? (
-                    <>
-                      <button
-                        className="confirm-button"
-                        onClick={() => handleRescheduleConfirm(appt.id)}
-                        disabled={!newDate}
-                      >
-                        Confirm Reschedule
-                      </button>
-                      <button
-                        className="cancel-button"
-                        onClick={handleRescheduleCancel}
-                      >
-                        Cancel
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <button
-                        className="decline-button"
-                        onClick={() => handleDecline(appt.id)}
-                      >
-                        Decline
-                      </button>
-                      <button
-                        className="confirm-button"
-                        onClick={() => handleConfirm(appt.id)}
-                      >
-                        Confirm
-                      </button>
-                      <button
-                        className="reschedule-button"
-                        onClick={() => handleRescheduleClick(appt.id)}
-                      >
-                        Reschedule
-                      </button>
-                    </>
-                  )}
+                  <button
+                    className="decline-button"
+                    onClick={() => handleDecline(appt.id)}
+                  >
+                    Decline
+                  </button>
+                  <button
+                    className="confirm-button"
+                    onClick={() => handleConfirm(appt.id)}
+                  >
+                    Confirm
+                  </button>
                 </td>
               </tr>
             ))}
