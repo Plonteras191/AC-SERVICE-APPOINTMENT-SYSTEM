@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/AdminReports.css';
 
 const AdminReports = () => {
-  // Sample data for demonstration
+  
   const completeAppointments = [
     { id: 1, customer: 'John Doe', date: '2025-04-01' },
     { id: 2, customer: 'Jane Smith', date: '2025-04-05' }

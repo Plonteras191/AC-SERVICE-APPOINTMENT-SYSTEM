@@ -5,7 +5,7 @@ import '../styles/Revenue.css';
 const Revenue = () => {
   const navigate = useNavigate();
   
-  // Load appointments from localStorage and filter for those marked as "Complete"
+  
   const [appointments, setAppointments] = useState([]);
   const [revenueData, setRevenueData] = useState({});
   const [totalRevenue, setTotalRevenue] = useState(0);

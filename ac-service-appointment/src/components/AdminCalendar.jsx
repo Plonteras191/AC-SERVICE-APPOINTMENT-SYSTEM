@@ -5,12 +5,12 @@ import '../styles/AdminCalendar.css';
 const AdminCalendar = () => {
   const navigate = useNavigate();
 
-  // For demonstration, assume current month is April 2025
+  
   const year = 2025;
-  const month = 3; // April (0-indexed: January=0)
+  const month = 3; 
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-  // Sample appointments data (hardcoded for now)
+  
   const appointments = [
     { id: 1, customer: "John Doe", service: "Repair", date: "2025-04-05", time: "10:00 AM", status: "Pending" },
     { id: 2, customer: "Jane Smith", service: "Installation", date: "2025-04-12", time: "02:00 PM", status: "Confirmed" },
@@ -20,14 +20,14 @@ const AdminCalendar = () => {
 
   const [selectedDay, setSelectedDay] = useState(null);
 
-  // Helper: format a day (number) as "YYYY-MM-DD"
+  
   const formatDate = (day) => {
     const dayStr = day.toString().padStart(2, '0');
     const monthStr = (month + 1).toString().padStart(2, '0');
     return `${year}-${monthStr}-${dayStr}`;
   };
 
-  // Filter appointments for the selected day
+  
   const appointmentsForDay = selectedDay
     ? appointments.filter(appt => appt.date === formatDate(selectedDay))
     : [];
