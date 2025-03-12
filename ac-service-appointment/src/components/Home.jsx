@@ -4,7 +4,7 @@ import '../styles/Home.css';
 
 const Home = () => (
   <>
-    {/* Full-width Hero Section */}
+   
     <section className="hero-section">
       <div className="hero-content">
         <h1>Professional Air Conditioning Services</h1>
@@ -16,7 +16,7 @@ const Home = () => (
       </div>
     </section>
 
-    {/* Full-width Features Section */}
+    
     <section className="features-section">
       <div className="feature-card">
         <div className="feature-icon">❄️</div>
@@ -35,9 +35,9 @@ const Home = () => (
       </div>
     </section>
 
-    {/* If you have more content to keep centered, use .home-container */}
+   
     <div className="home-container">
-      {/* Example: A footer CTA or other centered content */}
+    
       <section className="footer-cta">
         <h2>Ready to Stay Cool?</h2>
         <p>Contact us now for all your air conditioning needs.</p>

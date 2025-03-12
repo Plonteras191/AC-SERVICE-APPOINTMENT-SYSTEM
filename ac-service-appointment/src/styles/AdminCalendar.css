@@ -10,7 +10,7 @@
   margin-bottom: 20px;
 }
 
-/* Back to Dashboard Button Styling */
+/* Back to Dashboard Button */
 .back-button {
   padding: 10px 20px;
   background-color: #007BFF;
@@ -61,6 +61,17 @@
   background-color: #f0f2f5;
   border-radius: 4px;
   border: 1px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.calendar-cell:hover {
+  background-color: #e0e0e0;
+}
+
+/* Highlight days that have an appointment */
+.calendar-cell.has-appointment {
+  background-color: #c8e6c9;
 }
 
 .available-dates-box {
@@ -80,8 +91,52 @@
 .available-dates-box ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .available-dates-box li {
   margin-bottom: 8px;
+}
+
+.appointment-details {
+  margin-top: 30px;
+}
+
+.appointment-details h3 {
+  margin-bottom: 20px;
+  color: #007BFF;
+}
+
+.appointments-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.appointments-table th,
+.appointments-table td {
+  padding: 12px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.appointments-table th {
+  background-color: #007BFF;
+  color: #fff;
+}
+
+.back-to-calendar {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.back-to-calendar:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
