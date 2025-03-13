@@ -24,13 +24,13 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/call-us" className={({ isActive }) => (isActive ? 'active' : '')}>
-              Call Us
+            <NavLink to="/booking" className={({ isActive }) => (isActive ? 'active' : '')}>
+              Book Appointment
             </NavLink>
           </li>
           <li>
-            <NavLink to="/login" className={({ isActive }) => (isActive ? 'active' : '')}>
-              Login/SignUp
+            <NavLink to="/call-us" className={({ isActive }) => (isActive ? 'active' : '')}>
+              Call Us
             </NavLink>
           </li>
           <li>

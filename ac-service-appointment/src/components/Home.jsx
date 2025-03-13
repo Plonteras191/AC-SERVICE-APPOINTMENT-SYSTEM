@@ -8,7 +8,7 @@ const Home = () => (
     <section className="hero-section">
       <div className="hero-content">
         <h1>Professional Air Conditioning Services</h1>
-        <p>24/7 Emergency Service · NC2/NC3 Certified Technicians</p>
+        <p>Professional Services · NC2/NC3 Certified Technicians</p>
         <div className="cta-buttons">
           <Link to="/booking" className="cta-primary">Schedule Now</Link>
          
@@ -21,7 +21,7 @@ const Home = () => (
       <div className="feature-card">
         <div className="feature-icon">❄️</div>
         <h3>Fast Response</h3>
-        <p>24/7 emergency service</p>
+        <p>Professional Services</p>
       </div>
       <div className="feature-card">
         <div className="feature-icon">🔧</div>

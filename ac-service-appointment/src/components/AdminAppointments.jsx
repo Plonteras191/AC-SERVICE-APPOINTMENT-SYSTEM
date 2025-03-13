@@ -1,42 +1,64 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/AdminAppointments.css';
 
 const AdminAppointments = () => {
-  // Sample appointments data
+  const navigate = useNavigate();
+
+  // Sample appointments for demonstration
   const initialAppointments = [
     { id: 1, customer: 'John Doe', service: 'Repair', date: '2025-04-01', time: '10:00 AM', status: 'Pending' },
     { id: 2, customer: 'Jane Smith', service: 'Installation', date: '2025-04-02', time: '02:00 PM', status: 'Pending' },
   ];
 
   const [appointments, setAppointments] = useState(initialAppointments);
-  const navigate = useNavigate();
+  const [rescheduleId, setRescheduleId] = useState(null);
+  const [newDate, setNewDate] = useState('');
 
-  // Update status to Declined
-  const handleDecline = (id) => {
-    setAppointments(
-      appointments.map((appt) =>
-        appt.id === id ? { ...appt, status: 'Declined' } : appt
-      )
-    );
+  // Load appointments from localStorage if available
+  useEffect(() => {
+    const stored = localStorage.getItem('appointments');
+    if (stored) {
+      setAppointments(JSON.parse(stored));
+    }
+  }, []);
+
+  // Save appointments to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('appointments', JSON.stringify(appointments));
+  }, [appointments]);
+
+  // Cancel an appointment
+  const handleCancelAppointment = (id) => {
+    setAppointments(appointments.filter(appt => appt.id !== id));
   };
 
-  // Update status to Confirmed
-  const handleConfirm = (id) => {
+  // Set reschedule mode for a given appointment
+  const handleRescheduleClick = (id) => {
+    setRescheduleId(id);
+  };
+
+  // Confirm the reschedule: update the appointment's date
+  const handleRescheduleConfirm = (id) => {
     setAppointments(
-      appointments.map((appt) =>
-        appt.id === id ? { ...appt, status: 'Confirmed' } : appt
+      appointments.map(appt =>
+        appt.id === id ? { ...appt, date: newDate } : appt
       )
     );
+    setRescheduleId(null);
+    setNewDate('');
+  };
+
+  // Cancel the rescheduling process
+  const handleRescheduleCancel = () => {
+    setRescheduleId(null);
+    setNewDate('');
   };
 
   return (
     <div className="admin-appointments-container">
-      <h2>Customer Appointments</h2>
-      <button
-        className="back-button"
-        onClick={() => navigate('/admin/dashboard')}
-      >
+      <h2>Admin Appointments</h2>
+      <button className="back-button" onClick={() => navigate('/admin/dashboard')}>
         Back to Dashboard
       </button>
       {appointments.length === 0 ? (
@@ -60,22 +82,54 @@ const AdminAppointments = () => {
                 <td>{appt.id}</td>
                 <td>{appt.customer}</td>
                 <td>{appt.service}</td>
-                <td>{appt.date}</td>
+                <td>
+                  {appt.date}
+                  {rescheduleId === appt.id && (
+                    <div className="reschedule-input-container">
+                      <input
+                        type="date"
+                        value={newDate}
+                        onChange={(e) => setNewDate(e.target.value)}
+                        className="reschedule-date-input"
+                      />
+                    </div>
+                  )}
+                </td>
                 <td>{appt.time}</td>
                 <td>{appt.status}</td>
                 <td>
-                  <button
-                    className="decline-button"
-                    onClick={() => handleDecline(appt.id)}
-                  >
-                    Decline
-                  </button>
-                  <button
-                    className="confirm-button"
-                    onClick={() => handleConfirm(appt.id)}
-                  >
-                    Confirm
-                  </button>
+                  {rescheduleId === appt.id ? (
+                    <>
+                      <button
+                        className="confirm-button"
+                        onClick={() => handleRescheduleConfirm(appt.id)}
+                        disabled={!newDate}
+                      >
+                        Confirm
+                      </button>
+                      <button
+                        className="cancel-button"
+                        onClick={handleRescheduleCancel}
+                      >
+                        Cancel Reschedule
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        className="cancel-button"
+                        onClick={() => handleCancelAppointment(appt.id)}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="reschedule-button"
+                        onClick={() => handleRescheduleClick(appt.id)}
+                      >
+                        Reschedule
+                      </button>
+                    </>
+                  )}
                 </td>
               </tr>
             ))}
