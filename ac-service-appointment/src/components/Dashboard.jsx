@@ -57,6 +57,10 @@ const Dashboard = () => {
             <Link to="/admin/revenue">Revenue</Link>
           </li>
           <li>
+             <Link to="/admin/revenue-history">Revenue History</Link>
+            </li>
+
+          <li>
             <button className="logout-button" onClick={handleLogout}>
               Logout
             </button>
@@ -88,7 +92,7 @@ const Dashboard = () => {
                 <td>{appt.status}</td>
                 <td>
                   {appt.status !== 'Complete' && (
-                    <button onClick={() => handleComplete(appt.id)}>
+                    <button className="complete-button" onClick={() => handleComplete(appt.id)}>
                       Complete
                     </button>
                   )}

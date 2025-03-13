@@ -1,26 +1,31 @@
+// src/components/Revenue.jsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Revenue.css';
 
 const Revenue = () => {
   const navigate = useNavigate();
-  
-  
   const [appointments, setAppointments] = useState([]);
   const [revenueData, setRevenueData] = useState({});
   const [totalRevenue, setTotalRevenue] = useState(0);
 
+  // On mount, load appointments from localStorage and filter those marked as "Complete"
   useEffect(() => {
     const storedAppointments = localStorage.getItem('appointments');
     if (storedAppointments) {
       const parsedAppointments = JSON.parse(storedAppointments);
-      const completed = parsedAppointments.filter(appt => appt.status === 'Complete');
-      setAppointments(completed);
+      const completedAppointments = parsedAppointments.filter(
+        (appt) => appt.status === 'Complete'
+      );
+      setAppointments(completedAppointments);
     }
   }, []);
 
   const handleInputChange = (id, value) => {
-    setRevenueData(prev => ({ ...prev, [id]: value }));
+    setRevenueData(prev => ({
+      ...prev,
+      [id]: value,
+    }));
   };
 
   const computeTotalRevenue = () => {
@@ -32,6 +37,18 @@ const Revenue = () => {
       }
     });
     setTotalRevenue(total);
+
+    // Create a new revenue record with the current date and computed total
+    const newEntry = {
+      date: new Date().toLocaleDateString(),
+      total: total,
+    };
+
+    // Save the new revenue record to localStorage
+    const storedHistory = localStorage.getItem('revenueHistory');
+    const history = storedHistory ? JSON.parse(storedHistory) : [];
+    history.push(newEntry);
+    localStorage.setItem('revenueHistory', JSON.stringify(history));
   };
 
   return (
@@ -41,38 +58,42 @@ const Revenue = () => {
         Back to Dashboard
       </button>
       <div className="revenue-box">
-        <table className="revenue-table">
-          <thead>
-            <tr>
-              <th>Appointment ID</th>
-              <th>Customer</th>
-              <th>Service</th>
-              <th>Date</th>
-              <th>Revenue (Php)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {appointments.map(appt => (
-              <tr key={appt.id}>
-                <td>{appt.id}</td>
-                <td>{appt.customer}</td>
-                <td>{appt.service}</td>
-                <td>{appt.date}</td>
-                <td>
-                  <input
-                    type="number"
-                    placeholder="0.00"
-                    value={revenueData[appt.id] || ''}
-                    onChange={(e) => handleInputChange(appt.id, e.target.value)}
-                  />
-                </td>
+        {appointments.length === 0 ? (
+          <p>No completed appointments available.</p>
+        ) : (
+          <table className="revenue-table">
+            <thead>
+              <tr>
+                <th>Appointment ID</th>
+                <th>Customer</th>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Revenue (Php)</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {appointments.map(appt => (
+                <tr key={appt.id}>
+                  <td>{appt.id}</td>
+                  <td>{appt.customer}</td>
+                  <td>{appt.service}</td>
+                  <td>{appt.date}</td>
+                  <td>
+                    <input
+                      type="number"
+                      placeholder="0.00"
+                      value={revenueData[appt.id] || ''}
+                      onChange={(e) => handleInputChange(appt.id, e.target.value)}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
         <div className="revenue-actions">
           <button className="compute-button" onClick={computeTotalRevenue}>
-            Compute Revenue
+            Compute Total Revenue
           </button>
           <div className="total-display">
             <h3>Total Revenue: Php {totalRevenue.toFixed(2)}</h3>

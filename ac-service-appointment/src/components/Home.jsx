@@ -11,7 +11,7 @@ const Home = () => (
         <p>24/7 Emergency Service · NC2/NC3 Certified Technicians</p>
         <div className="cta-buttons">
           <Link to="/booking" className="cta-primary">Schedule Now</Link>
-          <Link to="/contact" className="cta-secondary">Contact Us</Link>
+         
         </div>
       </div>
     </section>
