@@ -7,7 +7,7 @@ const Home = () => (
    
     <section className="hero-section">
       <div className="hero-content">
-        <h1>Professional Air Conditioning Services</h1>
+        <h1>CDOC EER Aircon Cleaning and Repair-Home Service </h1>
         <p>Professional Services · NC2/NC3 Certified Technicians</p>
         <div className="cta-buttons">
           <Link to="/booking" className="cta-primary">Schedule Now</Link>

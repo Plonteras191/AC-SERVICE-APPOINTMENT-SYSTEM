@@ -4,9 +4,9 @@ import '../styles/Services.css';
 const Services = () => {
   const services = [
     {
-      title: 'Routine Maintenance',
+      title: 'Routine Maintenance and Cleaning',
       description: 'Regular check-ups and cleaning to keep your AC running efficiently and prevent unexpected breakdowns.',
-      price: 'Price range from ₱500',
+      price: 'Price range from ₱500 - 2500',
     },
     {
       title: 'Repair',

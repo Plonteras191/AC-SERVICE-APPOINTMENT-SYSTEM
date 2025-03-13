@@ -8,8 +8,9 @@ const About = () => {
       <div className="about-box">
         <h2>About Us</h2>
         <p>
-        Welcome to ❄️ EER Aircon Services, your trusted partner in air conditioning services. We are dedicated to providing high-quality and reliable cooling solutions to homes and businesses in our community. With a commitment to excellence and customer satisfaction, we ensure that your comfort is our top priority.
-        At ❄️ EER Aircon Service, we specialize in air conditioning installation, maintenance, and repair services. Our team of skilled professionals is equipped with the expertise and experience to handle all types of air conditioning systems, ensuring optimal performance and energy efficiency.
+        Welcome to ❄️ EER Aircon Services – your trusted partner in air conditioning solutions. We are dedicated to providing high-quality and reliable cooling services to both homes and businesses in our community,
+         ensuring your comfort is always our top priority. With a commitment to excellence and customer satisfaction, we specialize in air conditioning installation, maintenance, repairs, and now offer convenient home service,
+          delivering expert care right to your doorstep. Our team of skilled professionals is equipped with the expertise and experience to handle all types of air conditioning systems, ensuring optimal performance and energy efficiency for your complete peace of mind.
         </p>
         <div className="address-box">
           <div className="address-text">
