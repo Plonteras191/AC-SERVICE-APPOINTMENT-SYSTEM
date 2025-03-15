@@ -1,33 +1,27 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [admin, setAdmin] = useState(null);
+  const [admin, setAdmin] = useState(() => JSON.parse(localStorage.getItem('admin')) || null);
 
-  const login = (credentials) => {
-    // Simulate user login
-    setUser({ email: credentials.email });
-  };
+  useEffect(() => {
+    localStorage.setItem('admin', JSON.stringify(admin));
+  }, [admin]);
 
-  const signup = (details) => {
-    // Simulate user registration
-    setUser({ email: details.email });
-  };
-
-  const adminLogin = (credentials) => {
-    // Simulate admin login
-    setAdmin({ email: credentials.email });
+  const adminLogin = async (credentials) => {
+    // Simulated API request (Replace with actual API call)
+    const response = { email: credentials.email, token: "admin-token" };
+    setAdmin(response);
   };
 
   const logout = () => {
-    setUser(null);
     setAdmin(null);
+    localStorage.removeItem('admin');
   };
 
   return (
-    <AuthContext.Provider value={{ user, admin, login, signup, adminLogin, logout }}>
+    <AuthContext.Provider value={{ admin, adminLogin, logout }}>
       {children}
     </AuthContext.Provider>
   );

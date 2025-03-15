@@ -88,7 +88,7 @@ const Booking = () => {
             <h3>Service</h3>
             <select value={service} onChange={handleServiceChange} required>
               <option value="">Select Service</option>
-              <option value="maintenance">Routine Maintenance</option>
+              <option value="maintenance">Routine Maintenance and Cleaning</option>
               <option value="repair">Repair</option>
               <option value="installation">Installation</option>
             </select>

@@ -77,3 +77,31 @@
     margin-left: 250px; /* Offset main content by sidebar's width */
   }
   
+  @media (max-width: 768px) {
+    .sidebar {
+        width: 200px; /* Reduce width on smaller screens */
+    }
+    .dashboard-main {
+        margin-left: 200px;
+    }
+}
+@media (max-width: 480px) {
+    .sidebar {
+        position: absolute;
+        left: -100%;
+        transition: left 0.3s ease;
+    }
+    .sidebar.open {
+        left: 0;
+    }
+    .dashboard-main {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+  .logout-button {
+      width: 100%;
+      font-size: 1rem;
+  }
+}

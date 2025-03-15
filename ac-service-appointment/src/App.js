@@ -27,7 +27,7 @@ const AnimatedRoutes = () => {
   const location = useLocation();
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         {/* Public Routes */}
         <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
@@ -42,12 +42,12 @@ const AnimatedRoutes = () => {
 
         {/* Admin Routes nested under AdminLayout */}
         <Route path="/admin" element={<AdminLayout />}>
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="appointments" element={<AdminAppointments />} />
-          <Route path="reports" element={<AdminReports />} />
-          <Route path="calendar" element={<AdminCalendar />} />
-          <Route path="revenue" element={<Revenue />} />
-          <Route path="revenue-history" element={<RevenueHistory />} />
+          <Route path="dashboard" element={<PageWrapper><Dashboard /></PageWrapper>} />
+          <Route path="appointments" element={<PageWrapper><AdminAppointments /></PageWrapper>} />
+          <Route path="reports" element={<PageWrapper><AdminReports /></PageWrapper>} />
+          <Route path="calendar" element={<PageWrapper><AdminCalendar /></PageWrapper>} />
+          <Route path="revenue" element={<PageWrapper><Revenue /></PageWrapper>} />
+          <Route path="revenue-history" element={<PageWrapper><RevenueHistory /></PageWrapper>} />
         </Route>
       </Routes>
     </AnimatePresence>

@@ -11,11 +11,13 @@
   background-color: #fff;
   padding: 30px 20px;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-  position: fixed;     /* Fixed sidebar */
-  top: 0;              /* Align to the top */
-  left: 0;             /* Align to the left */
-  height: 100vh;       /* Full viewport height */
-  overflow-y: auto;    /* Scroll if needed */
+  position: sticky;     
+  top: 0;             
+  left: 0;             
+  height: 100vh;      
+  overflow-y: auto;
+  scrollbar-width: thin;
+      
 }
 
 .sidebar ul {
@@ -41,7 +43,8 @@
 .dashboard-main {
   flex: 1;
   padding: 30px;
-  margin-left: 1px;  /* Adjust to the sidebar's width */
+  margin-left: 250px; /* Match sidebar width */
+    transition: margin-left 0.3s ease-in-out;
 }
 
 .dashboard-main h2 {
@@ -80,6 +83,7 @@
   transition: background-color 0.3s, transform 0.3s;
   margin-top: 10px;
   margin-left: 20px;
+  
 }
 
 .logout-button:hover {
