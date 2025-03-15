@@ -1,10 +1,8 @@
 // src/components/Revenue.jsx
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../styles/Revenue.css';
 
 const Revenue = () => {
-  const navigate = useNavigate();
   const [appointments, setAppointments] = useState([]);
   const [revenueData, setRevenueData] = useState({});
   const [totalRevenue, setTotalRevenue] = useState(0);
@@ -54,9 +52,7 @@ const Revenue = () => {
   return (
     <div className="revenue-container">
       <h2>Revenue</h2>
-      <button className="back-button" onClick={() => navigate('/admin/dashboard')}>
-        Back to Dashboard
-      </button>
+      {/* "Back to Dashboard" button removed */}
       <div className="revenue-box">
         {appointments.length === 0 ? (
           <p>No completed appointments available.</p>

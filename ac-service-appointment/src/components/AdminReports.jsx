@@ -1,9 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../styles/AdminReports.css';
 
 const AdminReports = () => {
-  
   const completeAppointments = [
     { id: 1, customer: 'John Doe', date: '2025-04-01' },
     { id: 2, customer: 'Jane Smith', date: '2025-04-05' }
@@ -15,20 +13,17 @@ const AdminReports = () => {
     { id: 4, customer: 'Bob White', date: '2025-04-04' }
   ];
 
-  const navigate = useNavigate();
-
   return (
     <div className="admin-reports-container">
       <h2>Reports</h2>
-      <button className="back-button" onClick={() => navigate('/admin/dashboard')}>
-        Back to Dashboard
-      </button>
       <div className="reports-box">
         <div className="report-section">
           <h3>Complete Appointments</h3>
           <ul>
             {completeAppointments.map(app => (
-              <li key={app.id}>ID: {app.id} - {app.customer} on {app.date}</li>
+              <li key={app.id}>
+                ID: {app.id} - {app.customer} on {app.date}
+              </li>
             ))}
           </ul>
         </div>
@@ -36,7 +31,9 @@ const AdminReports = () => {
           <h3>Cancelled Appointments</h3>
           <ul>
             {cancelledAppointments.map(app => (
-              <li key={app.id}>ID: {app.id} - {app.customer} on {app.date}</li>
+              <li key={app.id}>
+                ID: {app.id} - {app.customer} on {app.date}
+              </li>
             ))}
           </ul>
         </div>
@@ -44,7 +41,9 @@ const AdminReports = () => {
           <h3>Declined Appointments</h3>
           <ul>
             {declinedAppointments.map(app => (
-              <li key={app.id}>ID: {app.id} - {app.customer} on {app.date}</li>
+              <li key={app.id}>
+                ID: {app.id} - {app.customer} on {app.date}
+              </li>
             ))}
           </ul>
         </div>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-// Removed: import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../styles/AdminAppointments.css';
 
 const AdminAppointments = () => {
-  // Removed: const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // Sample appointments for demonstration
   const initialAppointments = [
@@ -53,6 +53,17 @@ const AdminAppointments = () => {
   const handleRescheduleCancel = () => {
     setRescheduleId(null);
     setNewDate('');
+  };
+
+  // Accept an appointment, update its status, and navigate to Dashboard
+  const handleAcceptAppointment = (id) => {
+    const updatedAppointments = appointments.map(appt =>
+      appt.id === id ? { ...appt, status: 'Accepted' } : appt
+    );
+    setAppointments(updatedAppointments);
+    // Optionally, update localStorage if needed (effect will run automatically)
+    // Navigate back to Dashboard (or refresh the dashboard view)
+    navigate('/admin/dashboard');
   };
 
   return (
@@ -124,6 +135,12 @@ const AdminAppointments = () => {
                         onClick={() => handleRescheduleClick(appt.id)}
                       >
                         Reschedule
+                      </button>
+                      <button
+                        className="accept-button"
+                        onClick={() => handleAcceptAppointment(appt.id)}
+                      >
+                        Accept
                       </button>
                     </>
                   )}

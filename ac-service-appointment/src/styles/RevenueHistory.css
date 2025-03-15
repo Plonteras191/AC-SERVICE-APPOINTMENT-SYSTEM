@@ -7,8 +7,9 @@
   }
   
   .revenue-history-container h2 {
-    color: #007BFF;
+    color: #0c5994;
     margin-bottom: 20px;
+    margin-top: -30px;
   }
   
   .back-button {
@@ -29,11 +30,12 @@
   }
   
   .revenue-history-box {
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     text-align: left;
+   
   }
   
   .revenue-history-table {

@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../styles/AdminCalendar.css';
 
 const AdminCalendar = () => {
-  const navigate = useNavigate();
-
-  
   const year = 2025;
   const month = 3; 
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-  
   const appointments = [
     { id: 1, customer: "John Doe", service: "Repair", date: "2025-04-05", time: "10:00 AM", status: "Pending" },
     { id: 2, customer: "Jane Smith", service: "Installation", date: "2025-04-12", time: "02:00 PM", status: "Confirmed" },
@@ -20,14 +15,12 @@ const AdminCalendar = () => {
 
   const [selectedDay, setSelectedDay] = useState(null);
 
-  
   const formatDate = (day) => {
     const dayStr = day.toString().padStart(2, '0');
     const monthStr = (month + 1).toString().padStart(2, '0');
     return `${year}-${monthStr}-${dayStr}`;
   };
 
-  
   const appointmentsForDay = selectedDay
     ? appointments.filter(appt => appt.date === formatDate(selectedDay))
     : [];
@@ -35,9 +28,8 @@ const AdminCalendar = () => {
   return (
     <div className="admin-calendar-page">
       <h2>Admin Calendar</h2>
-      <button className="back-button" onClick={() => navigate('/admin/dashboard')}>
-        Back to Dashboard
-      </button>
+      
+      {/* "Back to Dashboard" button removed */}
 
       {/* Calendar Grid View */}
       {!selectedDay && (

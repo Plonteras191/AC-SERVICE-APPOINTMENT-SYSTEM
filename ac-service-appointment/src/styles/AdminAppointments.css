@@ -32,7 +32,8 @@
 /* Action buttons styling */
 .cancel-button,
 .reschedule-button,
-.confirm-button {
+.confirm-button,
+.accept-button {
   padding: 6px 10px;
   border: none;
   border-radius: 4px;
@@ -48,6 +49,11 @@
 
 .cancel-button:hover {
   background-color: #c82333;
+}
+
+.accept-button {
+  background-color: rgb(11, 127, 165);
+  color: #fff;
 }
 
 .reschedule-button {
