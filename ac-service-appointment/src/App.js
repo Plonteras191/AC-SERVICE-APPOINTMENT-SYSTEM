@@ -12,12 +12,13 @@ import Confirmation from './components/Confirmation';
 
 // Admin Pages
 import AdminLogin from './components/AdminLogin';
-import Dashboard from './components/Dashboard';         // Admin Dashboard
+import Dashboard from './components/Dashboard';
 import AdminAppointments from './components/AdminAppointments';
 import AdminReports from './components/AdminReports';
 import AdminCalendar from './components/AdminCalendar';
 import Revenue from './components/Revenue';
 import RevenueHistory from './components/RevenueHistory';
+import AdminLayout from './components/AdminLayout';
 
 // Reusable PageWrapper for smooth transitions
 import PageWrapper from './components/PageWrapper';
@@ -36,14 +37,18 @@ const AnimatedRoutes = () => {
         <Route path="/booking" element={<PageWrapper><Booking /></PageWrapper>} />
         <Route path="/confirmation" element={<PageWrapper><Confirmation /></PageWrapper>} />
 
-        {/* Admin Routes */}
+        {/* Admin Login */}
         <Route path="/admin/login" element={<PageWrapper><AdminLogin /></PageWrapper>} />
-        <Route path="/admin/dashboard" element={<PageWrapper><Dashboard /></PageWrapper>} />
-        <Route path="/admin/appointments" element={<PageWrapper><AdminAppointments /></PageWrapper>} />
-        <Route path="/admin/reports" element={<PageWrapper><AdminReports /></PageWrapper>} />
-        <Route path="/admin/calendar" element={<PageWrapper><AdminCalendar /></PageWrapper>} />
-        <Route path="/admin/revenue" element={<PageWrapper><Revenue /></PageWrapper>} />
-        <Route path="/admin/revenue-history" element={<PageWrapper><RevenueHistory /></PageWrapper>} />
+
+        {/* Admin Routes nested under AdminLayout */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="appointments" element={<AdminAppointments />} />
+          <Route path="reports" element={<AdminReports />} />
+          <Route path="calendar" element={<AdminCalendar />} />
+          <Route path="revenue" element={<Revenue />} />
+          <Route path="revenue-history" element={<RevenueHistory />} />
+        </Route>
       </Routes>
     </AnimatePresence>
   );

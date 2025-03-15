@@ -3,6 +3,7 @@
   display: flex;
   min-height: 100vh;
   background-color: #f0f2f5;
+  margin-left: -190px;
 }
 
 .sidebar {
@@ -10,6 +11,11 @@
   background-color: #fff;
   padding: 30px 20px;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  position: fixed;     /* Fixed sidebar */
+  top: 0;              /* Align to the top */
+  left: 0;             /* Align to the left */
+  height: 100vh;       /* Full viewport height */
+  overflow-y: auto;    /* Scroll if needed */
 }
 
 .sidebar ul {
@@ -35,6 +41,7 @@
 .dashboard-main {
   flex: 1;
   padding: 30px;
+  margin-left: 1px;  /* Adjust to the sidebar's width */
 }
 
 .dashboard-main h2 {
@@ -94,4 +101,3 @@
 .complete-button:hover {
   background-color: #0056b3; /* Darker blue */
 }
-

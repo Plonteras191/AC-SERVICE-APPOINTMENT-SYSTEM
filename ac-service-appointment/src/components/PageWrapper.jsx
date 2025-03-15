@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const pageVariants = {
   initial: {
-    scale: 0.9,
+    scale: 0.95,
     opacity: 0,
   },
   in: {
@@ -11,14 +11,14 @@ const pageVariants = {
     opacity: 1,
   },
   out: {
-    scale: 1.1,
+    scale: 1.05,
     opacity: 0,
   },
 };
 
 const pageTransition = {
-  duration: 0.5,
-  ease: 'easeInOut',
+  duration: 0.5, // faster transition
+  ease: [0.43, 0.13, 0.23, 0.96], // smooth custom cubic-bezier easing
 };
 
 const PageWrapper = ({ children }) => {

@@ -9,7 +9,7 @@ const Confirmation = () => {
 
   return (
     <div className="confirmation-container">
-      <h2>Appointment Confirmed</h2>
+      <h2>Appointment Pending!</h2>
       <p>Thank you for booking your appointment!</p>
       <p>Your appointment details:</p>
       <ul>

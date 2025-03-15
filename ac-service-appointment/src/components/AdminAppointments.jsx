@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// Removed: import { useNavigate } from 'react-router-dom';
 import '../styles/AdminAppointments.css';
 
 const AdminAppointments = () => {
-  const navigate = useNavigate();
+  // Removed: const navigate = useNavigate();
 
   // Sample appointments for demonstration
   const initialAppointments = [
@@ -58,9 +58,6 @@ const AdminAppointments = () => {
   return (
     <div className="admin-appointments-container">
       <h2>Admin Appointments</h2>
-      <button className="back-button" onClick={() => navigate('/admin/dashboard')}>
-        Back to Dashboard
-      </button>
       {appointments.length === 0 ? (
         <p>No appointments available.</p>
       ) : (
