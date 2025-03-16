@@ -1,12 +1,23 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 import '../styles/Booking.css';
 
 const Booking = () => {
   const [service, setService] = useState('');
   const [acTypes, setAcTypes] = useState([]);
-  const [customACType, setCustomACType] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
   const navigate = useNavigate();
+
+  // Sample available dates for demonstration purposes
+  const availableDates = [
+    new Date('2025-04-01'),
+    new Date('2025-04-02'),
+    new Date('2025-04-03'),
+    new Date('2025-04-04'),
+    new Date('2025-04-05'),
+  ];
 
   const handleServiceChange = (e) => {
     setService(e.target.value);
@@ -24,19 +35,12 @@ const Booking = () => {
     }
   };
 
-  const handleAddCustomACType = () => {
-    const trimmed = customACType.trim();
-    if (trimmed && !acTypes.includes(trimmed)) {
-      setAcTypes([...acTypes, trimmed]);
-      setCustomACType("");
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
+    const dateStr = selectedDate ? selectedDate.toISOString().slice(0, 10) : '';
     const data = {
-      date: formData.get('date'),
+      date: dateStr,
       name: formData.get('name'),
       phone: formData.get('phone'),
       email: formData.get('email'),
@@ -44,7 +48,7 @@ const Booking = () => {
       houseNo: formData.get('houseNo'),
       apartmentNo: formData.get('apartmentNo'),
       service,
-      acTypes, // Array of selected AC types
+      acTypes,
     };
     console.log(data);
     navigate('/confirmation', { state: data });
@@ -55,10 +59,18 @@ const Booking = () => {
       <h2>Book Your Appointment</h2>
       <div className="booking-box">
         <form onSubmit={handleSubmit}>
-          {/* Date Section */}
+          {/* Date Section with Calendar */}
           <div className="date-section">
             <label htmlFor="date">Select Date:</label>
-            <input type="date" id="date" name="date" required />
+            <DatePicker
+              id="date"
+              selected={selectedDate}
+              onChange={(date) => setSelectedDate(date)}
+              includeDates={availableDates}
+              placeholderText="Select an available date"
+              required
+              dateFormat="yyyy-MM-dd"
+            />
           </div>
 
           {/* Customer Details Section */}
@@ -126,15 +138,6 @@ const Booking = () => {
                   />
                   Split Type
                 </label>
-              </div>
-              <div className="ac-type-custom">
-                <input
-                  type="text"
-                  placeholder="Add custom AC type"
-                  value={customACType}
-                  onChange={(e) => setCustomACType(e.target.value)}
-                />
-                <button type="button" onClick={handleAddCustomACType}>Add</button>
               </div>
             </div>
           )}

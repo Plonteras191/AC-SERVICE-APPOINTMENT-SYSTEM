@@ -17,8 +17,8 @@ const pageVariants = {
 };
 
 const pageTransition = {
-  duration: 0.5, // faster transition
-  ease: [0.43, 0.13, 0.23, 0.96], // smooth custom cubic-bezier easing
+  duration: 0.5,
+  ease: [0.43, 0.13, 0.23, 0.96], 
 };
 
 const PageWrapper = ({ children }) => {

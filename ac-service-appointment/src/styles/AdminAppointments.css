@@ -1,3 +1,5 @@
+/* src/styles/AdminAppointments.css */
+
 .admin-appointments-container {
   padding: 50px;
   max-width: 1000px;
@@ -6,10 +8,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-align: center;
-  
 }
-
-
 
 .appointments-table {
   width: 100%;
@@ -29,7 +28,7 @@
   color: #fff;
 }
 
-/* Action buttons styling */
+/* Action Buttons Styling */
 .cancel-button,
 .reschedule-button,
 .confirm-button,
@@ -51,11 +50,6 @@
   background-color: #c82333;
 }
 
-.accept-button {
-  background-color: rgb(11, 127, 165);
-  color: #fff;
-}
-
 .reschedule-button {
   background-color: #ffc107;
   color: #333;
@@ -74,6 +68,16 @@
   background-color: #218838;
 }
 
+.accept-button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.accept-button:hover {
+  background-color: #0056b3;
+}
+
+/* Reschedule Input Styling */
 .reschedule-input-container {
   margin-top: 5px;
 }

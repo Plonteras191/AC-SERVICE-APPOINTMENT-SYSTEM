@@ -7,17 +7,18 @@ const Revenue = () => {
   const [revenueData, setRevenueData] = useState({});
   const [totalRevenue, setTotalRevenue] = useState(0);
 
-  // On mount, load appointments from localStorage and filter those marked as "Complete"
+  
   useEffect(() => {
-    const storedAppointments = localStorage.getItem('appointments');
+    loadCompletedAppointments();
+  }, []);
+
+  const loadCompletedAppointments = () => {
+    const storedAppointments = localStorage.getItem('completedAppointments');
     if (storedAppointments) {
       const parsedAppointments = JSON.parse(storedAppointments);
-      const completedAppointments = parsedAppointments.filter(
-        (appt) => appt.status === 'Complete'
-      );
-      setAppointments(completedAppointments);
+      setAppointments(parsedAppointments);
     }
-  }, []);
+  };
 
   const handleInputChange = (id, value) => {
     setRevenueData(prev => ({
@@ -36,23 +37,30 @@ const Revenue = () => {
     });
     setTotalRevenue(total);
 
-    // Create a new revenue record with the current date and computed total
+    
     const newEntry = {
       date: new Date().toLocaleDateString(),
       total: total,
     };
 
-    // Save the new revenue record to localStorage
+   
     const storedHistory = localStorage.getItem('revenueHistory');
     const history = storedHistory ? JSON.parse(storedHistory) : [];
     history.push(newEntry);
     localStorage.setItem('revenueHistory', JSON.stringify(history));
   };
 
+ 
+  const clearCompletedAppointments = () => {
+    localStorage.removeItem('completedAppointments');
+    setAppointments([]);
+    setRevenueData({});
+    setTotalRevenue(0);
+  };
+
   return (
     <div className="revenue-container">
       <h2>Revenue</h2>
-      {/* "Back to Dashboard" button removed */}
       <div className="revenue-box">
         {appointments.length === 0 ? (
           <p>No completed appointments available.</p>
@@ -90,6 +98,9 @@ const Revenue = () => {
         <div className="revenue-actions">
           <button className="compute-button" onClick={computeTotalRevenue}>
             Compute Total Revenue
+          </button>
+          <button className="clear-button" onClick={clearCompletedAppointments}>
+            Clear
           </button>
           <div className="total-display">
             <h3>Total Revenue: Php {totalRevenue.toFixed(2)}</h3>

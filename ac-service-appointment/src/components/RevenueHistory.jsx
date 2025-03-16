@@ -5,7 +5,7 @@ import '../styles/RevenueHistory.css';
 const RevenueHistory = () => {
   const [history, setHistory] = useState([]);
 
-  // Load revenue history from localStorage on mount
+ 
   useEffect(() => {
     const storedHistory = localStorage.getItem('revenueHistory');
     if (storedHistory) {

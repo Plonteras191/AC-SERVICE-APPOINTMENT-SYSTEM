@@ -10,9 +10,7 @@ const CallUs = () => {
       <div className="phone-number">+63 910 399 8178</div>
       <div className="phone-number">+63 935 941 5893</div>
       <p>Our customer service Hotline</p>
-      <button className="call-button" onClick={() => window.location.href = 'tel:+639123456789'}>
-        Call Now
-      </button>
+     
     </div>
   );
 };

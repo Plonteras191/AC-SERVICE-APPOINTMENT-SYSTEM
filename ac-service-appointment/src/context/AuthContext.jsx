@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   }, [admin]);
 
   const adminLogin = async (credentials) => {
-    // Simulated API request (Replace with actual API call)
+    
     const response = { email: credentials.email, token: "admin-token" };
     setAdmin(response);
   };

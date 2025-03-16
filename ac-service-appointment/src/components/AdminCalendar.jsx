@@ -7,10 +7,10 @@ const AdminCalendar = () => {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
   const appointments = [
-    { id: 1, customer: "John Doe", service: "Repair", date: "2025-04-05", time: "10:00 AM", status: "Pending" },
-    { id: 2, customer: "Jane Smith", service: "Installation", date: "2025-04-12", time: "02:00 PM", status: "Confirmed" },
-    { id: 3, customer: "Alice Brown", service: "Maintenance", date: "2025-04-12", time: "09:00 AM", status: "Pending" },
-    { id: 4, customer: "Bob White", service: "Repair", date: "2025-04-20", time: "11:00 AM", status: "Pending" },
+    { id: 1, customer: "John Kristoffer", service: "Repair", date: "2025-04-05", time: "10:00 AM", status: "Pending" },
+    { id: 2, customer: "Edmar ArmsStrong", service: "Installation", date: "2025-04-12", time: "02:00 PM", status: "Confirmed" },
+    { id: 3, customer: "Just Buico", service: "Maintenance, Repair", date: "2025-04-12", time: "09:00 AM", status: "Pending" },
+    { id: 4, customer: "Gabi Val", service: "Repair, Installation", date: "2025-04-20", time: "11:00 AM", status: "Pending" },
   ];
 
   const [selectedDay, setSelectedDay] = useState(null);
@@ -29,9 +29,9 @@ const AdminCalendar = () => {
     <div className="admin-calendar-page">
       <h2>Admin Calendar</h2>
       
-      {/* "Back to Dashboard" button removed */}
+      
 
-      {/* Calendar Grid View */}
+      
       {!selectedDay && (
         <div className="calendar-container">
           <div className="big-calendar">
@@ -64,7 +64,7 @@ const AdminCalendar = () => {
         </div>
       )}
 
-      {/* Appointment Details View */}
+      
       {selectedDay && (
         <div className="appointment-details">
           <h3>Appointments for {formatDate(selectedDay)}</h3>

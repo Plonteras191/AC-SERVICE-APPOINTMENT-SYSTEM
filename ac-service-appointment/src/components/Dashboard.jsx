@@ -2,30 +2,32 @@ import React, { useState, useEffect } from 'react';
 import PageWrapper from './PageWrapper';
 import '../styles/Dashboard.css';
 
-const defaultAppointments = [
-  { id: 1, customer: 'John Doe', service: 'Repair', date: '2025-04-01', time: '10:00 AM', status: 'Confirmed' },
-  { id: 2, customer: 'Jane Smith', service: 'Installation', date: '2025-04-02', time: '02:00 PM', status: 'Confirmed' },
-];
-
 const Dashboard = () => {
+  
   const [confirmedAppointments, setConfirmedAppointments] = useState(() => {
-    const stored = localStorage.getItem('appointments');
-    return stored ? JSON.parse(stored).filter(app => app.status === 'Confirmed') : defaultAppointments;
+    const stored = localStorage.getItem('confirmedAppointments');
+    return stored ? JSON.parse(stored) : [];
   });
 
+  
   useEffect(() => {
-    localStorage.setItem('appointments', JSON.stringify(confirmedAppointments));
+    localStorage.setItem('confirmedAppointments', JSON.stringify(confirmedAppointments));
   }, [confirmedAppointments]);
 
+ 
   const completeAppointment = (id) => {
-    const completedAppointment = confirmedAppointments.find(app => app.id === id);
-    if (completedAppointment) {
+    const appointmentToComplete = confirmedAppointments.find(app => app.id === id);
+    if (appointmentToComplete) {
       const updatedConfirmed = confirmedAppointments.filter(app => app.id !== id);
       setConfirmedAppointments(updatedConfirmed);
-
+      
+    
+      const completedAppointment = { ...appointmentToComplete, status: 'Complete', sales: '' };
+      
+    
       const storedCompleted = localStorage.getItem('completedAppointments');
-      const completedList = storedCompleted ? JSON.parse(storedCompleted) : [];
-      const newCompleted = [...completedList, { ...completedAppointment, sales: '' }];
+      const completedAppointments = storedCompleted ? JSON.parse(storedCompleted) : [];
+      const newCompleted = [...completedAppointments, completedAppointment];
       localStorage.setItem('completedAppointments', JSON.stringify(newCompleted));
     }
   };

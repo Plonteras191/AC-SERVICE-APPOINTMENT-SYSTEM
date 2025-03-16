@@ -1,44 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../styles/AdminAppointments.css';
 
 const AdminAppointments = () => {
-  const navigate = useNavigate();
-
-  // Sample appointments for demonstration
+ 
   const initialAppointments = [
-    { id: 1, customer: 'John Doe', service: 'Repair', date: '2025-04-01', time: '10:00 AM', status: 'Pending' },
-    { id: 2, customer: 'Jane Smith', service: 'Installation', date: '2025-04-02', time: '02:00 PM', status: 'Pending' },
+    { id: 1, customer: 'John Kristoffer', service: 'Repair,Maintenance', date: '2025-04-01', time: '10:00 AM', status: 'Pending' },
+    { id: 2, customer: 'Just Buico', service: 'Installation', date: '2025-04-02', time: '02:00 PM', status: 'Pending' },
   ];
 
-  const [appointments, setAppointments] = useState(initialAppointments);
+  const [appointments, setAppointments] = useState(() => {
+    const stored = localStorage.getItem('appointments');
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      
+      if (parsed.length === 0) {
+        localStorage.setItem('appointments', JSON.stringify(initialAppointments));
+        return initialAppointments;
+      }
+      return parsed;
+    }
+    return initialAppointments;
+  });
   const [rescheduleId, setRescheduleId] = useState(null);
   const [newDate, setNewDate] = useState('');
 
-  // Load appointments from localStorage if available
-  useEffect(() => {
-    const stored = localStorage.getItem('appointments');
-    if (stored) {
-      setAppointments(JSON.parse(stored));
-    }
-  }, []);
-
-  // Save appointments to localStorage whenever they change
+  
   useEffect(() => {
     localStorage.setItem('appointments', JSON.stringify(appointments));
   }, [appointments]);
 
-  // Cancel an appointment
+  
   const handleCancelAppointment = (id) => {
     setAppointments(appointments.filter(appt => appt.id !== id));
   };
 
-  // Set reschedule mode for a given appointment
+  
   const handleRescheduleClick = (id) => {
     setRescheduleId(id);
   };
 
-  // Confirm the reschedule: update the appointment's date
+  
   const handleRescheduleConfirm = (id) => {
     setAppointments(
       appointments.map(appt =>
@@ -49,21 +50,32 @@ const AdminAppointments = () => {
     setNewDate('');
   };
 
-  // Cancel the rescheduling process
+ 
   const handleRescheduleCancel = () => {
     setRescheduleId(null);
     setNewDate('');
   };
 
-  // Accept an appointment, update its status, and navigate to Dashboard
+  
   const handleAcceptAppointment = (id) => {
-    const updatedAppointments = appointments.map(appt =>
-      appt.id === id ? { ...appt, status: 'Accepted' } : appt
-    );
-    setAppointments(updatedAppointments);
-    // Optionally, update localStorage if needed (effect will run automatically)
-    // Navigate back to Dashboard (or refresh the dashboard view)
-    navigate('/admin/dashboard');
+    
+    const appointmentToAccept = appointments.find(appt => appt.id === id);
+    if (!appointmentToAccept) return;
+    
+    
+    const acceptedAppointment = { ...appointmentToAccept, status: 'Confirmed' };
+    
+    
+    const updatedPending = appointments.filter(appt => appt.id !== id);
+    setAppointments(updatedPending);
+    
+    
+    const storedConfirmed = localStorage.getItem('confirmedAppointments');
+    const confirmedAppointments = storedConfirmed ? JSON.parse(storedConfirmed) : [];
+    
+    
+    const updatedConfirmed = [...confirmedAppointments, acceptedAppointment];
+    localStorage.setItem('confirmedAppointments', JSON.stringify(updatedConfirmed));
   };
 
   return (

@@ -3,14 +3,14 @@ import '../styles/AdminReports.css';
 
 const AdminReports = () => {
   const completeAppointments = [
-    { id: 1, customer: 'John Doe', date: '2025-04-01' },
-    { id: 2, customer: 'Jane Smith', date: '2025-04-05' }
+    { id: 1, customer: 'John Kristoffer', date: '2025-04-01' },
+    { id: 2, customer: 'Gabi Val', date: '2025-04-05' }
   ];
   const cancelledAppointments = [
-    { id: 3, customer: 'Alice Brown', date: '2025-04-03' }
+    { id: 3, customer: 'Edmar ArmStrong', date: '2025-04-03' }
   ];
   const declinedAppointments = [
-    { id: 4, customer: 'Bob White', date: '2025-04-04' }
+    { id: 4, customer: 'Just Buico', date: '2025-04-04' }
   ];
 
   return (
