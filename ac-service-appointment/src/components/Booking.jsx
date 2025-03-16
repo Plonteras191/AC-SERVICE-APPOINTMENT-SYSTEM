@@ -10,7 +10,7 @@ const Booking = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const navigate = useNavigate();
 
-  // Sample available dates for demonstration purposes
+ 
   const availableDates = [
     new Date('2025-04-01'),
     new Date('2025-04-02'),
@@ -21,7 +21,7 @@ const Booking = () => {
 
   const handleServiceChange = (e) => {
     setService(e.target.value);
-    setAcTypes([]); // Reset AC types when service changes
+    setAcTypes([]); 
   };
 
   const handleACTypeChange = (e) => {

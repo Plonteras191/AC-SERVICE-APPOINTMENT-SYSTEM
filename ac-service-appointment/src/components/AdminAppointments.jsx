@@ -4,15 +4,15 @@ import '../styles/AdminAppointments.css';
 const AdminAppointments = () => {
  
   const initialAppointments = [
-    { id: 1, customer: 'John Kristoffer', service: 'Repair,Maintenance', date: '2025-04-01', time: '10:00 AM', status: 'Pending' },
-    { id: 2, customer: 'Just Buico', service: 'Installation', date: '2025-04-02', time: '02:00 PM', status: 'Pending' },
+    { id: 1, customer: 'John Kristoffer', phone: '092-682-25122', email: 'john@gmail.com', service: 'Repair', date: '2025-04-01', time: '10:00 AM', status: 'Pending' },
+    { id: 2, customer: 'Just Buico', phone: '095-104-38982', email: 'just@gmail.com', service: 'Installation,Maintenace', date: '2025-04-02', time: '02:00 PM', status: 'Pending' },
   ];
 
   const [appointments, setAppointments] = useState(() => {
     const stored = localStorage.getItem('appointments');
     if (stored) {
       const parsed = JSON.parse(stored);
-      
+     
       if (parsed.length === 0) {
         localStorage.setItem('appointments', JSON.stringify(initialAppointments));
         return initialAppointments;
@@ -39,7 +39,7 @@ const AdminAppointments = () => {
     setRescheduleId(id);
   };
 
-  
+ 
   const handleRescheduleConfirm = (id) => {
     setAppointments(
       appointments.map(appt =>
@@ -50,30 +50,30 @@ const AdminAppointments = () => {
     setNewDate('');
   };
 
- 
+  
   const handleRescheduleCancel = () => {
     setRescheduleId(null);
     setNewDate('');
   };
 
-  
+ 
   const handleAcceptAppointment = (id) => {
-    
+   
     const appointmentToAccept = appointments.find(appt => appt.id === id);
     if (!appointmentToAccept) return;
     
     
     const acceptedAppointment = { ...appointmentToAccept, status: 'Confirmed' };
     
-    
+   
     const updatedPending = appointments.filter(appt => appt.id !== id);
     setAppointments(updatedPending);
     
-    
+   
     const storedConfirmed = localStorage.getItem('confirmedAppointments');
     const confirmedAppointments = storedConfirmed ? JSON.parse(storedConfirmed) : [];
     
-    
+   
     const updatedConfirmed = [...confirmedAppointments, acceptedAppointment];
     localStorage.setItem('confirmedAppointments', JSON.stringify(updatedConfirmed));
   };
@@ -89,6 +89,8 @@ const AdminAppointments = () => {
             <tr>
               <th>ID</th>
               <th>Customer</th>
+              <th>Phone</th>
+              <th>Email</th>
               <th>Service</th>
               <th>Date</th>
               <th>Time</th>
@@ -101,6 +103,8 @@ const AdminAppointments = () => {
               <tr key={appt.id}>
                 <td>{appt.id}</td>
                 <td>{appt.customer}</td>
+                <td>{appt.phone}</td>
+                <td>{appt.email}</td>
                 <td>{appt.service}</td>
                 <td>
                   {appt.date}

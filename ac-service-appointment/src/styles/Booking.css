@@ -8,7 +8,7 @@
   background: #f7f9fc;
 }
 
-/* Booking Box */
+
 .booking-box {
   background-color: #fff;
   padding: 40px 30px;
@@ -18,14 +18,13 @@
   text-align: left;
 }
 
-/* Form styling */
+
 .booking-box form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* Date Section */
 .date-section label {
   font-weight: 600;
   margin-bottom: 5px;
@@ -50,7 +49,7 @@
   outline: none;
 }
 
-/* Customer Details */
+
 .customer-details label {
   font-weight: 600;
   margin-bottom: 5px;
@@ -73,7 +72,7 @@
   outline: none;
 }
 
-/* Address Section */
+
 .address-section h3,
 .service-section h3,
 .ac-type-section h3 {
@@ -104,7 +103,7 @@
   outline: none;
 }
 
-/* Select Dropdown */
+
 select {
   padding: 10px;
   border: 1px solid #ccc;
@@ -119,7 +118,7 @@ select:focus {
   outline: none;
 }
 
-/* AC Type Section */
+
 .ac-type-section {
   margin-top: 20px;
 }
@@ -175,7 +174,7 @@ select:focus {
   transform: translateY(-1px);
 }
 
-/* Submit Button */
+
 button[type="submit"] {
   padding: 14px;
   background-color: #007BFF;

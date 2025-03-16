@@ -1,13 +1,13 @@
 /* src/styles/Dashboard.css */
 
-/* Main Dashboard Content */
 .dashboard-main {
   padding: 30px;
-  margin-left: 250px; /* Matches the sidebar width */
+  margin: 0 auto; 
   background-color: #f0f2f5;
   min-height: 100vh;
-  transition: margin-left 0.3s ease-in-out;
+  transition: margin 0.3s ease-in-out;
   font-family: Arial, sans-serif;
+  width: 650px; 
 }
 
 .dashboard-main h2 {
@@ -23,14 +23,14 @@
   margin-bottom: 20px;
 }
 
-/* Dashboard Section for Accepted Appointments */
 .dashboard-section {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  margin: 20px auto;
-  max-width: 1000px;
+  margin: 20px auto; 
+  width: 1000px; 
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-left: -100px;
 }
 
 .dashboard-section h3 {
@@ -39,17 +39,21 @@
   text-align: left;
 }
 
-/* Appointment Box Container */
+
 .appointment-box {
   overflow-x: auto;
   padding: 10px;
+  width: 100%;
+  
 }
 
-/* Table Styling for Appointments */
+
 .appointments-table {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
+  min-width: 800px;
+   
 }
 
 .appointments-table th,
@@ -68,7 +72,7 @@
   background-color: #f9f9f9;
 }
 
-/* Complete Button Styling */
+/* Complete Button */
 .complete-button {
   background-color: #007bff;
   color: white;
@@ -84,16 +88,27 @@
   background-color: #0056b3;
 }
 
-/* Responsive Adjustments */
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .dashboard-main {
+    width: 100%;
+    padding: 20px;
+  }
+  .dashboard-section {
+    width: 100%;
+    padding: 15px;
+  }
+}
+
 @media (max-width: 768px) {
   .dashboard-main {
-    margin-left: 200px; /* Adjust if sidebar width is reduced */
+    width: 100%;
+    padding: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .dashboard-main {
-    margin-left: 0;
     padding: 20px;
   }
 }

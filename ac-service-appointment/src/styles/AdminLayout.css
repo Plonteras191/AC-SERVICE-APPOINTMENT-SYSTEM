@@ -45,22 +45,22 @@
     color: #fff;
   }
   
-  /* Adjusted footer positioning */
+  
   .sidebar-footer {
-    margin-top: 10px; /* Reduced margin to move logout button higher */
+    margin-top: 10px; 
     padding-top: 10px;
   }
   
-  /* Adjusted smaller logout button */
+  
   .logout-button {
     width: 90%;
-    padding: 12px 9px; /* Smaller padding */
+    padding: 12px 9px; 
     background-color: #dc3545;
     color: #fff;
     border: none;
-    border-radius: 20px; /* Smaller border radius */
+    border-radius: 20px; 
     cursor: pointer;
-    font-size: 0.9rem; /* Slightly smaller font size */
+    font-size: 0.9rem; 
     transition: background-color 0.3s, transform 0.3s;
     margin-left: 0px;
     margin-top: -20px;
@@ -74,12 +74,12 @@
   .dashboard-main {
     flex: 1;
     padding: 30px;
-    margin-left: 250px; /* Offset main content by sidebar's width */
+    margin-left: 250px; 
   }
   
   @media (max-width: 768px) {
     .sidebar {
-        width: 200px; /* Reduce width on smaller screens */
+        width: 200px; 
     }
     .dashboard-main {
         margin-left: 200px;

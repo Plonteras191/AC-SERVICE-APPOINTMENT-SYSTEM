@@ -1,4 +1,4 @@
-/* Container for the confirmation page */
+
 .confirmation-container {
   padding: 50px 20px;
   max-width: 600px;
@@ -10,21 +10,21 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Heading style */
+
 .confirmation-container h2 {
   color: #007BFF;
   margin-bottom: 20px;
   font-size: 2rem;
 }
 
-/* Paragraph styling */
+
 .confirmation-container p {
   font-size: 1.1rem;
   margin-bottom: 15px;
   color: #333;
 }
 
-/* Booking details styling */
+
 .booking-details ul {
   list-style: none;
   padding: 0;
@@ -40,7 +40,7 @@
   padding-bottom: 8px;
 }
 
-/* Button styling */
+
 .confirmation-container button {
   padding: 14px 30px;
   background-color: #007BFF;

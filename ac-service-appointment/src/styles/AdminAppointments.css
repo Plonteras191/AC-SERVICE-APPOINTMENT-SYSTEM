@@ -1,14 +1,16 @@
-/* src/styles/AdminAppointments.css */
+
 
 .admin-appointments-container {
   padding: 50px;
-  max-width: 1000px;
+  max-width: 1900px; 
   margin: 0 auto;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  width: 100%;
 }
+
 
 .appointments-table {
   width: 100%;
@@ -18,7 +20,7 @@
 
 .appointments-table th,
 .appointments-table td {
-  padding: 12px;
+  padding: 14px; 
   border: 1px solid #ccc;
   text-align: center;
 }
@@ -28,17 +30,17 @@
   color: #fff;
 }
 
-/* Action Buttons Styling */
+
 .cancel-button,
 .reschedule-button,
 .confirm-button,
 .accept-button {
-  padding: 6px 10px;
+  padding: 8px 12px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  margin: 2px;
-  transition: background-color 0.3s;
+  margin: 4px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .cancel-button {
@@ -48,6 +50,7 @@
 
 .cancel-button:hover {
   background-color: #c82333;
+  transform: scale(1.05);
 }
 
 .reschedule-button {
@@ -57,6 +60,7 @@
 
 .reschedule-button:hover {
   background-color: #e0a800;
+  transform: scale(1.05);
 }
 
 .confirm-button {
@@ -66,6 +70,7 @@
 
 .confirm-button:hover {
   background-color: #218838;
+  transform: scale(1.05);
 }
 
 .accept-button {
@@ -75,15 +80,17 @@
 
 .accept-button:hover {
   background-color: #0056b3;
+  transform: scale(1.05);
 }
 
-/* Reschedule Input Styling */
+
 .reschedule-input-container {
   margin-top: 5px;
 }
 
 .reschedule-date-input {
-  padding: 5px;
+  padding: 7px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  width: 100%; 
 }
