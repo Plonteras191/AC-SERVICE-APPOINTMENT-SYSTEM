@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import PageWrapper from './PageWrapper';
+import PageWrapper from '../components/PageWrapper';
 import '../styles/Dashboard.css';
 
 const Dashboard = () => {
@@ -31,7 +31,7 @@ const Dashboard = () => {
     <PageWrapper>
       <div className="dashboard-main">
         <h2>Admin Dashboard</h2>
-        <p>Manage confirmed appointments and process completions for revenue tracking.</p>
+      
 
         <div className="dashboard-section">
           <h3>Confirmed Appointments</h3>

@@ -17,6 +17,10 @@ const Booking = () => {
     new Date('2025-04-03'),
     new Date('2025-04-04'),
     new Date('2025-04-05'),
+    new Date('2025-04-12'),
+    new Date('2025-04-15'),
+    new Date('2025-04-09'),
+    new Date('2025-04-20'),
   ];
 
   const handleServiceChange = (e) => {

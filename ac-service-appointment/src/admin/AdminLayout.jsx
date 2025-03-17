@@ -1,7 +1,7 @@
 // src/components/AdminLayout.jsx
 import React, { useContext } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
-import PageWrapper from './PageWrapper';
+import PageWrapper from '../components/PageWrapper';
 import { AuthContext } from '../context/AuthContext';
 import '../styles/AdminLayout.css';
 

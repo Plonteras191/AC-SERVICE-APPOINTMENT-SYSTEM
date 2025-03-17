@@ -11,16 +11,16 @@ import Booking from './components/Booking';
 import Confirmation from './components/Confirmation';
 
 // Admin Pages
-import AdminLogin from './components/AdminLogin';
-import Dashboard from './components/Dashboard';
-import AdminAppointments from './components/AdminAppointments';
-import AdminReports from './components/AdminReports';
-import AdminCalendar from './components/AdminCalendar';
-import Revenue from './components/Revenue';
-import RevenueHistory from './components/RevenueHistory';
-import AdminLayout from './components/AdminLayout';
+import AdminLogin from './admin/AdminLogin';
+import Dashboard from './admin/Dashboard';
+import AdminAppointments from './admin/AdminAppointments';
+import AdminReports from './admin/AdminReports';
+import AdminCalendar from './admin/AdminCalendar';
+import Revenue from './admin/Revenue';
+import RevenueHistory from './admin/RevenueHistory';
+import AdminLayout from './admin/AdminLayout';
 
-// Reusable PageWrapper for smooth transitions
+
 import PageWrapper from './components/PageWrapper';
 
 const AnimatedRoutes = () => {
