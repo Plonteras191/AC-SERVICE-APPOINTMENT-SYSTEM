@@ -26,8 +26,13 @@ const Confirmation = () => {
           <li>
             <strong>Email:</strong> {bookingData.email}
           </li>
+          {bookingData.completeAddress && (
+            <li>
+              <strong>Complete Address:</strong> {bookingData.completeAddress}
+            </li>
+          )}
           <li>
-            <strong>Address:</strong> {bookingData.street}, {bookingData.houseNo}, {bookingData.apartmentNo}
+            <strong>Street:</strong> {bookingData.street}, <strong>House No:</strong> {bookingData.houseNo}, <strong>Apartment No:</strong> {bookingData.apartmentNo}
           </li>
           <li>
             <strong>Service:</strong> {bookingData.service}

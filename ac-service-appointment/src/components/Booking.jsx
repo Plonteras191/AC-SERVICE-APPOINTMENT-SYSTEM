@@ -10,7 +10,7 @@ const Booking = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const navigate = useNavigate();
 
- 
+  // Sample available dates for demonstration purposes
   const availableDates = [
     new Date('2025-04-01'),
     new Date('2025-04-02'),
@@ -21,7 +21,7 @@ const Booking = () => {
 
   const handleServiceChange = (e) => {
     setService(e.target.value);
-    setAcTypes([]); 
+    setAcTypes([]); // Reset AC types when service changes
   };
 
   const handleACTypeChange = (e) => {
@@ -44,6 +44,7 @@ const Booking = () => {
       name: formData.get('name'),
       phone: formData.get('phone'),
       email: formData.get('email'),
+      completeAddress: formData.get('completeAddress'),
       street: formData.get('street'),
       houseNo: formData.get('houseNo'),
       apartmentNo: formData.get('apartmentNo'),
@@ -88,6 +89,15 @@ const Booking = () => {
           {/* Address Section */}
           <div className="address-section">
             <h3>Address</h3>
+            <div className="complete-address">
+             
+              <input
+                type="text"
+                id="completeAddress"
+                name="completeAddress"
+                placeholder="Enter complete address"
+              />
+            </div>
             <div className="address-inputs">
               <input type="text" name="street" placeholder="Street" required />
               <input type="text" name="houseNo" placeholder="House No" />

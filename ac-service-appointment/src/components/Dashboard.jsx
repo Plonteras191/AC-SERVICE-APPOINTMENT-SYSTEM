@@ -3,28 +3,23 @@ import PageWrapper from './PageWrapper';
 import '../styles/Dashboard.css';
 
 const Dashboard = () => {
-  
   const [confirmedAppointments, setConfirmedAppointments] = useState(() => {
     const stored = localStorage.getItem('confirmedAppointments');
     return stored ? JSON.parse(stored) : [];
   });
 
-  
   useEffect(() => {
     localStorage.setItem('confirmedAppointments', JSON.stringify(confirmedAppointments));
   }, [confirmedAppointments]);
 
- 
   const completeAppointment = (id) => {
     const appointmentToComplete = confirmedAppointments.find(app => app.id === id);
     if (appointmentToComplete) {
       const updatedConfirmed = confirmedAppointments.filter(app => app.id !== id);
       setConfirmedAppointments(updatedConfirmed);
-      
-    
+
       const completedAppointment = { ...appointmentToComplete, status: 'Complete', sales: '' };
-      
-    
+
       const storedCompleted = localStorage.getItem('completedAppointments');
       const completedAppointments = storedCompleted ? JSON.parse(storedCompleted) : [];
       const newCompleted = [...completedAppointments, completedAppointment];
@@ -47,7 +42,10 @@ const Dashboard = () => {
                   <tr>
                     <th>ID</th>
                     <th>Customer</th>
+                    <th>Phone</th>
+                    <th>Email</th>
                     <th>Service</th>
+                    <th>Address</th>
                     <th>Date</th>
                     <th>Time</th>
                     <th>Status</th>
@@ -59,7 +57,10 @@ const Dashboard = () => {
                     <tr key={appointment.id}>
                       <td>{appointment.id}</td>
                       <td>{appointment.customer}</td>
+                      <td>{appointment.phone}</td>
+                      <td>{appointment.email}</td>
                       <td>{appointment.service}</td>
+                      <td>{appointment.address}</td>
                       <td>{appointment.date}</td>
                       <td>{appointment.time}</td>
                       <td>{appointment.status}</td>

@@ -193,3 +193,24 @@ button[type="submit"]:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
 }
+
+.complete-address {
+  margin-bottom: 15px;
+}
+
+
+
+.complete-address input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.complete-address input:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+

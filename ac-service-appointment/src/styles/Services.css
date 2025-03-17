@@ -6,23 +6,22 @@
   text-align: center;
 }
 
-/* Services heading */
 .services-container h2 {
   color: #007BFF;
   margin-bottom: 40px;
   font-size: 2rem;
 }
 
-/* Grid container for service boxes */
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
 
-/* Individual service box styling */
+
 .service-box {
-  background-color: #fff;
+  background-color: #fdf8f8;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -30,20 +29,20 @@
   cursor: pointer;
 }
 
-/* Hover effect on service box */
+
 .service-box:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Service box title */
+
 .service-box h3 {
   color: #007BFF;
   margin-bottom: 10px;
   font-size: 1.5rem;
 }
 
-/* Service box description */
+
 .service-box p {
   font-size: 1rem;
   color: #333;

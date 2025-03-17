@@ -14,7 +14,7 @@ const About = () => {
         </p>
         <div className="address-box">
           <div className="address-text">
-            <h3>Our Address</h3>
+            <h1>Our Address</h1>
             <p>
               Gemilina St.Zone 6.<br />
               Bugo<br />

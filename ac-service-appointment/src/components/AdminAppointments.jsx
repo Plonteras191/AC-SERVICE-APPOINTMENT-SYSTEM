@@ -2,17 +2,35 @@ import React, { useState, useEffect } from 'react';
 import '../styles/AdminAppointments.css';
 
 const AdminAppointments = () => {
- 
   const initialAppointments = [
-    { id: 1, customer: 'John Kristoffer', phone: '092-682-25122', email: 'john@gmail.com', service: 'Repair', date: '2025-04-01', time: '10:00 AM', status: 'Pending' },
-    { id: 2, customer: 'Just Buico', phone: '095-104-38982', email: 'just@gmail.com', service: 'Installation,Maintenace', date: '2025-04-02', time: '02:00 PM', status: 'Pending' },
+    {
+      id: 1,
+      customer: 'John Kristoffer',
+      phone: '092-682-25122',
+      email: 'john@gmail.com',
+      service: 'Repair',
+      date: '2025-04-01',
+      time: '10:00 AM',
+      address: '123 Main St, Bugo, CDO',
+      status: 'Pending',
+    },
+    {
+      id: 2,
+      customer: 'Just Buico',
+      phone: '095-104-38982',
+      email: 'just@gmail.com',
+      service: 'Installation, Maintenance',
+      date: '2025-04-02',
+      time: '02:00 PM',
+      address: '456 Elm St, Zone 6, CDO',
+      status: 'Pending',
+    },
   ];
 
   const [appointments, setAppointments] = useState(() => {
     const stored = localStorage.getItem('appointments');
     if (stored) {
       const parsed = JSON.parse(stored);
-     
       if (parsed.length === 0) {
         localStorage.setItem('appointments', JSON.stringify(initialAppointments));
         return initialAppointments;
@@ -21,25 +39,22 @@ const AdminAppointments = () => {
     }
     return initialAppointments;
   });
+
   const [rescheduleId, setRescheduleId] = useState(null);
   const [newDate, setNewDate] = useState('');
 
-  
   useEffect(() => {
     localStorage.setItem('appointments', JSON.stringify(appointments));
   }, [appointments]);
 
-  
   const handleCancelAppointment = (id) => {
     setAppointments(appointments.filter(appt => appt.id !== id));
   };
 
-  
   const handleRescheduleClick = (id) => {
     setRescheduleId(id);
   };
 
- 
   const handleRescheduleConfirm = (id) => {
     setAppointments(
       appointments.map(appt =>
@@ -50,30 +65,22 @@ const AdminAppointments = () => {
     setNewDate('');
   };
 
-  
   const handleRescheduleCancel = () => {
     setRescheduleId(null);
     setNewDate('');
   };
 
- 
   const handleAcceptAppointment = (id) => {
-   
     const appointmentToAccept = appointments.find(appt => appt.id === id);
     if (!appointmentToAccept) return;
-    
-    
+
     const acceptedAppointment = { ...appointmentToAccept, status: 'Confirmed' };
-    
-   
     const updatedPending = appointments.filter(appt => appt.id !== id);
     setAppointments(updatedPending);
-    
-   
+
     const storedConfirmed = localStorage.getItem('confirmedAppointments');
     const confirmedAppointments = storedConfirmed ? JSON.parse(storedConfirmed) : [];
     
-   
     const updatedConfirmed = [...confirmedAppointments, acceptedAppointment];
     localStorage.setItem('confirmedAppointments', JSON.stringify(updatedConfirmed));
   };
@@ -92,6 +99,7 @@ const AdminAppointments = () => {
               <th>Phone</th>
               <th>Email</th>
               <th>Service</th>
+              <th>Address</th>
               <th>Date</th>
               <th>Time</th>
               <th>Status</th>
@@ -106,6 +114,7 @@ const AdminAppointments = () => {
                 <td>{appt.phone}</td>
                 <td>{appt.email}</td>
                 <td>{appt.service}</td>
+                <td>{appt.address}</td>
                 <td>
                   {appt.date}
                   {rescheduleId === appt.id && (
@@ -144,7 +153,7 @@ const AdminAppointments = () => {
                         className="cancel-button"
                         onClick={() => handleCancelAppointment(appt.id)}
                       >
-                        Cancel
+                        Reject
                       </button>
                       <button
                         className="reschedule-button"
